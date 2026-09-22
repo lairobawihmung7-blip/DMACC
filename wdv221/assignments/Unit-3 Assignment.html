@@ -15,20 +15,44 @@ div#container	{
 }
 </style>
 
-<script>	
+<script>
+    let studentName = "";  //global variable to be used later
+    let studentEmail = ""; //global variable to be used later
 
-	let studentName = "";	//global variable to be used later
-	let studentEmail = "";	//global variable to be used later
+    function displayGreeting() {
+        alert("Hello! Welcome to WDV221 Intro Javascript");
+    }
 
-	function displayGreeting() {
-		alert("Hello! Welcome to WDV221 Intro Javascript");	
-	}
-	
-	function getStudentName() {
-		studentName = prompt("Please enter your name");	
-	}
-	
-	function displayEmailServer(){
+    function getStudentName() {
+        studentName = prompt("Please enter your name");
+    }
+
+    // Task 3: prompt for DMACC email and assign to global variable
+    function getStudentEmail() {
+        studentEmail = prompt("Please enter your DMACC Email address:");
+    }
+
+    // Task 5: alert the email with the requested label
+    function displayEmail() {
+        alert("Student Email: " + studentEmail);
+    }
+
+    // Task 6: write name and email in their own paragraph tags
+    function printStudentInfo() {
+        document.write("<p>" + studentName + "</p>");
+        document.write("<p>" + studentEmail + "</p>");
+    }
+
+    // Fixed typo: changed Alert() to alert()
+    function displayEmailServer() {
+        alert("DMACC email address is yourname.dmacc.edu");
+    }
+
+    // Tasks 1, 2, 4: run as runtime scripts
+    displayGreeting();
+    getStudentName();
+    getStudentEmail();
+</script>
 		Alert("DMACC email address is yourname.dmacc.edu");
 	}
 
