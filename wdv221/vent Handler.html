@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5-1: Event Handlers</title>
+
+    <script>
+        // Button events
+        function buttonClick() {
+            console.log("HTML attribute event - click event occurred");
+        }
+
+        function buttonHover() {
+            console.log("Javascript property event - mouseover event occurred");
+        }
+
+        // Paragraph events
+        function paraHover() {
+            console.log("HTML attribute event - mouseover event occurred");
+        }
+
+        function paraLeave() {
+            console.log("Javascript property event - mouseout event occurred");
+        }
+
+        // Image event
+        function imageClick() {
+            console.log("addEventListener() event - click event occurred");
+        }
+
+        // Select dropdown event
+        function selectChange() {
+            console.log("Javascript property event - change event occurred");
+        }
+
+        // Setup function for property and addEventListener events
+        function setupHandlers() {
+            console.log("HTML attribute event - onload event occurred");
+
+            document.getElementById("btn").onmouseover = buttonHover;
+            document.getElementById("text").onmouseout = paraLeave;
+            document.getElementById("pic").addEventListener("click", imageClick);
+            document.getElementById("menu").onchange = selectChange;
+        }
+    </script>
+</head>
+
+<body onload="setupHandlers()">
+
+    <!-- Button -->
+    <button id="btn" onclick="buttonClick()">Click or Hover Me</button>
+
+    <br><br>
+
+    <!-- Paragraph -->
+    <p id="text" onmouseover="paraHover()">Hover over this text and move away.</p>
+
+    <!-- Image -->
+    <img id="pic" src="https://via.placeholder.com/150" alt="Placeholder">
+
+    <br><br>
+
+    <!-- Select Menu -->
+    <select id="menu">
+        <option value="" disabled selected>Select an option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+    </select>
+
+</body>
+</html>
