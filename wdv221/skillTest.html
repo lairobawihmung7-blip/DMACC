@@ -10,9 +10,10 @@
             console.log("Skill Test - Output Functions");
         }
 
-        // 2. Display City name
+        // 2. Display City name on page and console
         function outputCityName(inCityName) {
             console.log("You live in " + inCityName);
+            document.querySelector("#cityDisplay").textContent = "You live in " + inCityName;
         }
 
         // 3. Return a value
@@ -34,6 +35,10 @@
 
     <button onclick="outputCityName('West Des Moines')">Display WDM</button>
     <button onclick="outputCityName('Bondurant')">Display Bondurant</button>
+
+    <!-- Output display area -->
+    <p id="cityDisplay"></p>
+
     <p><a href="index.html">Back to Homework Page</a></p>
 </body>
 </html>
