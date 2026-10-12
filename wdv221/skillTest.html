@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skill Test - Output Functions</title>
+
+    <script>
+        // 1. Display to console
+        function displayMessage() {
+            console.log("Skill Test - Output Functions");
+        }
+
+        // 2. Display City name
+        function outputCityName(inCityName) {
+            console.log("You live in " + inCityName);
+        }
+
+        // 3. Return a value
+        function formatOrder(productName, productQuantity) {
+            return "You have ordered " + productQuantity + " copies of " + productName;
+        }
+
+        // Run time calls
+        displayMessage();
+        outputCityName("Ames");
+        outputCityName("Altoona");
+        console.log(formatOrder("Red Stapler", 7));
+    </script>
+</head>
+
+<body>
+
+    <h2>WDV221 Skill Test - Output Functions</h2>
+
+    <button onclick="outputCityName('West Des Moines')">Display WDM</button>
+    <button onclick="outputCityName('Bondurant')">Display Bondurant</button>
+    <p><a href="index.html">Back to Homework Page</a></p>
+</body>
+</html>
