@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Form Processing</title>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        form { max-width: 400px; display: flex; flex-direction: column; gap: 12px; }
+        @media (min-width:600px){
+            .row { display:flex; justify-content:space-between; }
+            .row input, .row select { width:48%; }
+        }
+    </style>
+
+    <script>
+        function showProduct() {
+            let p = document.getElementById("product");
+            let name = p.options[p.selectedIndex].text;
+            let price = p.value;
+
+            console.log("Product:", name);
+            console.log("Price:", price);
+        }
+
+        function processOrder() {
+            console.log("Company:", company.value);
+            console.log("Email:", email.value);
+            console.log("Phone:", phone.value);
+            console.log("Order Date:", orderDate.value);
+
+            let p = product;
+            console.log("Product:", p.options[p.selectedIndex].text);
+            console.log("Price:", p.value);
+
+            console.log("Quantity:", quantity.value);
+            console.log("Discount:", document.querySelector("input[name='discount']:checked").value);
+        }
+
+        function newForm() {
+            document.getElementById("orderForm").reset();
+        }
+    </script>
+</head>
+
+<body>
+
+<h2>Form Processing</h2>
+
+<form id="orderForm">
+
+    <input type="text" id="company" placeholder="Company Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="tel" id="phone" placeholder="Phone Number">
+    <input type="date" id="orderDate">
+
+    <select id="product" onchange="showProduct()">
+        <option value="">Choose Product</option>
+        <option value="2.49">Name Badge Lanyard</option>
+        <option value="1.34">Customized Pen</option>
+        <option value="3.87">Can Koozie</option>
+        <option value="0.48">Custom Decal</option>
+    </select>
+
+    <input type="number" id="quantity" placeholder="Quantity">
+
+    <label><input type="radio" name="discount" value="0" checked> No Discount</label>
+    <label><input type="radio" name="discount" value="10"> 10% Discount</label>
+    <label><input type="radio" name="discount" value="15"> 15% Discount</label>
+
+    <button type="button" onclick="processOrder()">Process Order</button>
+    <button type="button" onclick="newForm()">New Form</button>
+
+</form>
+
+</body>
+</html>
