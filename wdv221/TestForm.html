@@ -3,97 +3,96 @@
 <head>
 <meta charset="utf-8">
 <title>WDV221 Intro Javascript - Skill Test Form Calculations</title>
-
 <style>
-    form {
-        width: 500px;
-        border: 1px solid blue;
-        padding: 10px;
-    }
-
-    form h3 {
-        text-align: center;
-    }
+	form {
+		width: 500px;
+		border: 1px solid blue;
+		padding: 10px;	
+	}
+	form h3 {
+		text-align: center;	
+	}
 </style>
-
 </head>
 
 <body>
-
 <h1>WDV221 Intro Javascript</h1>
 <h2>Skill Test - Form Calculations</h2>
-
 <form id="form1">
-    <h3>Purchase Orders</h3>
-
-    <p>
-        <label for="products">Products available to Purchase</label>
-        <select id="products">
-            <option value="">Select a Product</option>
-            <option value="1.99">Pen</option>
-            <option value="0.49">Pencil</option>
-            <option value="5.99">Red Stapler</option>
-        </select>
-    </p>
-
-    <p>
-        <label for="textfield2">Number Purchased:</label>
-        <input type="text" id="textfield2">
-    </p>
-
-    <p>
-        <input type="submit" id="button" value="Submit Order">
-        <input type="reset" id="button2" value="Reset">
-        <input type="button" id="button3" value="Clear Order">
-    </p>
+  <h3>Purchase Orders</h3>
+  <p>
+    <label for="products">Products available to Purchase</label>
+    <select id="products">
+      <option value="">Select a Product</option>
+      <option value="1.99">Pen</option>
+      <option value="0.49">Pencil</option>
+      <option value="5.99">Red Stapler</option>
+    </select>
+  </p>
+  <p>
+    <label for="textfield2">Number Purchased: </label>
+    <input type="text" id="textfield2">
+  </p>
+  <p>
+    <input type="submit" id="button" value="Submit Order">
+    <input type="reset" id="button2" value="Reset">
+    <input type="button" id="button3" value="Clear Order">
+  </p>
 </form>
 
 <p>Sale Price for this purchase: <span id="salePrice"></span></p>
 <p>Total Sales for all purchases: <span id="totalSales"></span></p>
 
-<!-- Simple JavaScript -->
+<h3>Instructions: Modify this page so that the form works as described.</h3>
+<ol>
+  <li>The customer will select the product using the drop down list. The product price is in the value attribute.</li>
+  <li>The Number Purchased field should be a number and should only allow whole numbers.</li>
+  <li>When the customer clicks "Submit Order", calculate the Sale Price (product price * number purchased) and display it on the Sale Price line.</li>
+  <li>When the customer clicks "Submit Order", the form will add the 'salePrice' to the Total Sales value and display the new value on the Total Sales for all Purchases line.</li>
+  <li>All dollar amounts should be formatted as US currency.</li>
+  <li>The Reset button should clear the form fields and the 'salePrice' field.</li>
+  <li>The Clear Order button should clear the form fields, the 'salePrice', the 'totalSales' and start a new Total Sales.</li>
+</ol>
+
 <script>
-    let totalSales = 0;
+let totalSales = 0;
 
-    document.getElementById("button").addEventListener("click", function(e){
-        e.preventDefault();
+document.getElementById("button").addEventListener("click", function(e) {
+    e.preventDefault();
+    let price = parseFloat(document.getElementById("products").value);
+    let qty = document.getElementById("textfield2").value.trim();
 
-        let price = parseFloat(document.getElementById("products").value);
-        let qty = document.getElementById("textfield2").value;
+    // Validate product selection and whole positive number
+    if (isNaN(price) || qty === "" || isNaN(qty) || Number(qty) <= 0 || Number(qty) % 1 !== 0) {
+        alert("Please select a product and enter a valid whole number for quantity.");
+        return;
+    }
 
-        // basic validation
-        if (isNaN(price) || qty === "" || isNaN(qty) || qty <= 0 || qty % 1 !== 0) {
-            alert("Please select a product and enter a whole number.");
-            return;
-        }
+    qty = parseInt(qty, 10);
+    let salePrice = price * qty;
 
-        qty = parseInt(qty);
+    // Format currency
+    let saleFormatted = salePrice.toLocaleString("en-US", { style: "currency", currency: "USD" });
+    document.getElementById("salePrice").innerHTML = saleFormatted;
 
-        let salePrice = price * qty;
+    totalSales += salePrice;
+    let totalFormatted = totalSales.toLocaleString("en-US", { style: "currency", currency: "USD" });
+    document.getElementById("totalSales").innerHTML = totalFormatted;
+});
 
-        // format currency
-        let saleFormatted = salePrice.toLocaleString("en-US", {style:"currency", currency:"USD"});
-        document.getElementById("salePrice").innerHTML = saleFormatted;
+// Reset button clears form inputs and sale price
+document.getElementById("button2").addEventListener("click", function() {
+    document.getElementById("form1").reset();
+    document.getElementById("salePrice").innerHTML = "";
+});
 
-        totalSales += salePrice;
-        let totalFormatted = totalSales.toLocaleString("en-US", {style:"currency", currency:"USD"});
-        document.getElementById("totalSales").innerHTML = totalFormatted;
-    });
-
-    // Reset button clears sale price only
-    document.getElementById("button2").addEventListener("click", function(){
-        document.getElementById("salePrice").innerHTML = "";
-    });
-
-    // Clear Order button clears everything
-    document.getElementById("button3").addEventListener("click", function(){
-        document.getElementById("form1").reset();
-        document.getElementById("salePrice").innerHTML = "";
-        document.getElementById("totalSales").innerHTML = "";
-        totalSales = 0;
-    });
+// Clear Order button clears form inputs, sale price, and total sales
+document.getElementById("button3").addEventListener("click", function() {
+    document.getElementById("form1").reset();
+    document.getElementById("salePrice").innerHTML = "";
+    document.getElementById("totalSales").innerHTML = "";
+    totalSales = 0;
+});
 </script>
-
 </body>
 </html>
-
