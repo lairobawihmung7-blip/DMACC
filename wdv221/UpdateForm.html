@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WDV221 Intro Javascript - Operators and Textfields Assignment</title>
+<style>
+    body { background-color:#C99; font-family: Arial, sans-serif; margin: 30px; }
+    span { font-weight: bold; background-color: #fff; padding: 2px 6px; border: 1px solid #999; }
+</style>
+<script>
+    // Author: Lai Ro Bawi
+    let count = 0;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Display value1
+        document.getElementById("btnValue1").addEventListener("click", function(event) {
+            event.preventDefault();
+            // Exercise 1: Get value1 input and display it in the output textfield
+            let val1 = document.getElementById("value1Input").value;
+            document.getElementById("displayValue1").value = val1;
+        });
+
+        // 2. Display value2
+        document.getElementById("btnValue2").addEventListener("click", function(event) {
+            event.preventDefault();
+            // Exercise 2: Get value2 input and display it in the output textfield
+            let val2 = document.getElementById("value2Input").value;
+            document.getElementById("displayValue2").value = val2;
+        });
+
+        // 3. Multiply values
+        document.getElementById("btnMultiply").addEventListener("click", function(event) {
+            event.preventDefault();
+            // Exercise 3: Multiply value1 and value2 and display result in span
+            let val1 = Number(document.getElementById("value1Input").value);
+            let val2 = Number(document.getElementById("value2Input").value);
+            let result = val1 * val2;
+            document.getElementById("multiplySpan").innerText = result;
+        });
+
+        // 4. Add values
+        document.getElementById("btnApplyAdd").addEventListener("click", function(event) {
+            event.preventDefault();
+            // Exercise 4: Add value1 and value2 and display result in following textfield / span
+            let val1 = Number(document.getElementById("value1Input").value);
+            let val2 = Number(document.getElementById("value2Input").value);
+            let result = val1 + val2;
+            document.getElementById("addSpan").innerText = result;
+        });
+
+        // 5. Increment count
+        document.getElementById("btnIncrement").addEventListener("click", function(event) {
+            event.preventDefault();
+            // Exercise 5: Use increment operator to add 1 to count and display new value
+            count++;
+            document.getElementById("incrementSpan").innerText = count;
+        });
+
+        // 6. Random Number
+        document.getElementById("btnRandom").addEventListener("click", function(event) {
+            event.preventDefault();
+            // Exercise 6: Generate a random number between 1 and 10 and display it
+            let randomNum = Math.floor(Math.random() * 10) + 1;
+            document.getElementById("randomSpan").innerText = randomNum;
+        });
+
+        // 7. Reset Button handling
+        document.getElementById("button").addEventListener("click", function() {
+            // Clears form fields, output fields, and resets count
+            document.getElementById("form1").reset();
+            document.getElementById("displayValue1").value = "";
+            document.getElementById("displayValue2").value = "";
+            document.getElementById("multiplySpan").innerText = "";
+            document.getElementById("addSpan").innerText = "";
+            document.getElementById("incrementSpan").innerText = "";
+            document.getElementById("randomSpan").innerText = "";
+            count = 0;
+        });
+    });
+</script>
+</head>
+<body>
+<h2>WDV221 Intro Javascript</h2>
+<h3>Form Processing, Operators </h3>
+<hr />
+<p>Include a comment in each script with the exercise number and a description of what the script is supposed to do.</p>
+<hr />
+<h3>Instructions</h3>
+<p>Use the form fields for the input values. For each of the following exercises create a function what will be activated by the button. Use addEventListener() to handle click events.</p>
+<p>Use addEventListener() for any events.</p>
+<p>For problems 1. and 2. display the results into the provided text fields.</p>
+<p>For problems 3., 4. and 5. display the results in the span elements. Provide some CSS styling to highlight the displayed content. </p>
+<p>The Reset button should clear all form fields, all display fields, and reset the incremented count to start over.</p>
+
+<form id="form1" name="form1" method="post" action="">
+    <p>Enter a number for value1: <input type="text" id="value1Input" /> </p>
+    <p>Enter a number for value 2: <input type="text" id="value2Input" /> </p>
+    
+    <p>1. <input type="submit" id="btnValue1" value="Display value1" /> Display the value you entered for value1: <input type="text" id="displayValue1"/> </p>
+    
+    <p>2. <input type="submit" id="btnValue2" value="Display value2" /> Display the value you entered for value2: <input type="text" id="displayValue2"/> </p>
+    
+    <p>3. <input type="submit" id="btnMultiply" value="Multiply" /> Display the value of value1 * value2: <span id="multiplySpan"></span> </p>
+    
+    <p>4. <input type="submit" id="btnApplyAdd" value="Add" /> Display the results of value1 + value2 in the following textfield. <span id="addSpan"></span> </p>
+    
+    <p>5. <input type="submit" id="btnIncrement" value="Increment count" /> Use the increment operator to add 1 to count and display the new value of count. <span id="incrementSpan"></span> </p>
+    
+    <p>6. <button id="btnRandom">Random Number</button> Display a random number between 1 and 10. <span id="randomSpan"></span> </p>
+    
+    <p> <input type="reset" name="Reset" id="button" value="Try Again"> </p>
+</form>
+
+</body>
+</html>
