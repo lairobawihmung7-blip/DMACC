@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WDV221 Intro Javascript - Skill Test - Loops and Arrays</title>
+  <script>
+    // Replace these sample entries with the exact array values from your template file if needed
+    const products = ["Laptop", "Wireless Mouse", "Mechanical Keyboard", "Monitor Stand"];
+    const productNumber = ["P101", "P102", "P103", "P104"];
+    const selectionFactors = ["Price", "Quality", "Features", "Reviews"];
+    const references = ["Search Engine", "Friend or Colleague", "Social Media", "Advertisement"];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Populate <select> using products and productNumber arrays
+      const productSelect = document.getElementById("productSelect");
+      if (productSelect) {
+        for (let i = 0; i < products.length; i++) {
+          const option = document.createElement("option");
+          option.value = productNumber[i];
+          option.textContent = products[i];
+          productSelect.appendChild(option);
+        }
+      }
+
+      // 2. Create radio buttons from selectionFactors array
+      const radioContainer = document.getElementById("selectionFactorsContainer");
+      if (radioContainer) {
+        selectionFactors.forEach((factor, index) => {
+          const row = document.createElement("div");
+
+          const radio = document.createElement("input");
+          radio.type = "radio";
+          radio.name = "selectionFactor";
+          radio.id = `factor_${index}`;
+          radio.value = factor;
+
+          const label = document.createElement("label");
+          label.htmlFor = radio.id;
+          label.textContent = factor;
+
+          row.append(radio, label);
+          radioContainer.appendChild(row);
+        });
+      }
+
+      // 3. Create checkboxes from references array
+      const checkboxContainer = document.getElementById("referencesContainer");
+      if (checkboxContainer) {
+        references.forEach((refItem, index) => {
+          const row = document.createElement("div");
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.name = "references";
+          checkbox.id = `reference_${index}`;
+          checkbox.value = refItem;
+
+          const label = document.createElement("label");
+          label.htmlFor = checkbox.id;
+          label.textContent = refItem;
+
+          row.append(checkbox, label);
+          checkboxContainer.appendChild(row);
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>WDV221 Intro Javascript</h1>
+  <h2>Skill Test - Loops and Arrays</h2>
+
+  <form id="surveyForm">
+    <p>1. Which product did you purchase?</p>
+    <select id="productSelect" name="product">
+      <option value="">Select a product</option>
+    </select>
+
+    <p>2. Please choose the primary factor in why you purchased our product:</p>
+    <div id="selectionFactorsContainer"></div>
+
+    <p>3. How did your hear about us? Please select all that apply:</p>
+    <div id="referencesContainer"></div>
+  </form>
+
+  <p>Your Input Matters</p>
+  <p>Instructions:</p>
+  <ol>
+    <li>Use the products array and the productNumber array to dynamically populate the select menu. Include the productNumbers as value atttributes.</li>
+    <li>Use the selectionFactors array to dynamically create a set of radio buttons.</li>
+    <li>Use the references array to dynamically create a set of check boxes.</li>
+  </ol>
+</body>
+</html>
